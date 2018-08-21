@@ -1,4 +1,4 @@
-# Nginx
+# Nginx config
 #
 # VERSION               0.1.0
 

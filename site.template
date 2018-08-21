@@ -1,0 +1,47 @@
+fastcgi_cache_path /dev/shm levels=1:2 keys_zone=laravel:100m;
+fastcgi_cache_key "$scheme$request_method$host$request_uri$query_string";
+
+server {
+
+    listen 80 default_server;
+    listen [::]:80 default_server ipv6only=on;
+
+    server_name ${NGINX_HOST};
+    root /var/www/dataserver/public;
+    index       index.html index.php;
+
+    client_max_body_size 5M;
+
+    location / {
+        alias /var/www/client/;
+        try_files $uri $uri/ /index.html?$args;
+      }
+
+    location ~ ^/(api) {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+         root /var/www/dataserver/public;
+         fastcgi_cache laravel;
+         fastcgi_cache_valid 200 204 1m;
+         fastcgi_ignore_headers Cache-Control;
+         fastcgi_no_cache $http_authorization $cookie_laravel_session;
+         fastcgi_cache_lock on;
+         fastcgi_cache_lock_timeout 10s;
+
+         add_header X-Proxy-Cache $upstream_cache_status;
+
+         fastcgi_pass   ${NGINX_PHP_APP}:9000;
+         fastcgi_index  index.php;
+         fastcgi_param  SCRIPT_FILENAME $document_root$fastcgi_script_name;
+         fastcgi_read_timeout 900s;
+         include        fastcgi_params;
+     }
+
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+

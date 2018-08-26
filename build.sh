@@ -18,10 +18,10 @@ docker push klimby/e-nginx:latest
 rm *.tar
 
 # docker save klimby/e-nginx:$PACKAGE_VERSION klimby/e-nginx:latest > e-nginx.$PACKAGE_VERSION.tar
-docker save klimby/e-nginx:$PACKAGE_VERSION klimby/e-nginx:latest > e-nginx.tar
+# docker save klimby/e-nginx:$PACKAGE_VERSION klimby/e-nginx:latest nginx:1.15-alpine > e-nginx.tar
 
 git tag -a $PACKAGE_VERSION -m "version $PACKAGE_VERSION"
 
-ls -sh e-nginx.$PACKAGE_VERSION.tar
+# ls -sh e-nginx.tar
 
 

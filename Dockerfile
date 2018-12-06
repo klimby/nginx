@@ -1,19 +1,19 @@
 FROM nginx:1.15-alpine
 LABEL e-nginx.description="nginx:1.15-alpine"
-LABEL e-nginx.version="0.1.16"
+# LABEL e-nginx.version="0.1.16"
 
-ARG NGINX_HOST=test.local;
-ARG NGINX_PHP_APP=127.0.0.1;
-
-RUN set -x ; \
-  addgroup -g 82 -S www-data ; \
-  adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
+# RUN set -x ; \
+#  addgroup -g 82 -S www-data ; \
+#  adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
 
 RUN apk --no-cache --update add nano
 
-# todo LOG PERMISSION
+COPY nginx.conf /etc/nginx/
 
-ADD nginx.conf /etc/nginx/
+RUN rm /etc/nginx/conf.d/*.conf
+ADD default.conf /etc/nginx/conf.d/
+
+
 # ADD prod/nginx/default.conf /etc/nginx/conf.d/
 # ADD template.conf /etc/nginx/conf.d/
 

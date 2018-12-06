@@ -1,0 +1,27 @@
+{
+  "name": "e-nginx",
+  "version": "0.1.16",
+  "description": "nginx:1.15-alpine",
+  "main": "index.js",
+  "scripts": {
+    "release": "standard-version",
+    "patch": "standard-version -- --release-as patch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klimby/e-nginx.git"
+  },
+  "keywords": [
+    "docker",
+    "nginx"
+  ],
+  "author": "Alexander Klimov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klimby/e-nginx/issues"
+  },
+  "homepage": "https://github.com/klimby/e-nginx#readme",
+  "devDependencies": {
+    "standard-version": "^4.4.0"
+  }
+}

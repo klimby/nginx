@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/klimby/e-nginx/compare/v0.3.0...v0.3.1) (2018-12-10)
+
+
+### Bug Fixes
+
+* **release:** remove duplivate daemon off ([8542e53](https://github.com/klimby/e-nginx/commit/8542e53))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/klimby/e-nginx/compare/v0.2.0...v0.3.0) (2018-12-10)
 

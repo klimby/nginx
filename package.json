@@ -1,6 +1,6 @@
 {
   "name": "e-nginx",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "nginx:1.15-alpine",
   "main": "index.js",
   "scripts": {

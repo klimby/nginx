@@ -1,6 +1,14 @@
 FROM nginx:1.15-alpine
 LABEL e-nginx.description="nginx:1.15-alpine"
-# LABEL e-nginx.version="0.1.16"
+
+ENV SERVER_CONFIG_PATH /etc/nginx/conf.d/default.conf
+ENV FPM_PORT 9000
+ENV FPM_HOST dataserver
+ENV ROOT_DIR /var/www
+ENV SERVER_NAME localhost
+
+ENV SERVER_PATH /var/www/dataserver/public
+ENV CLIENT_PATH /var/www/client
 
 # RUN set -x ; \
 #  addgroup -g 82 -S www-data ; \
@@ -8,16 +16,19 @@ LABEL e-nginx.description="nginx:1.15-alpine"
 
 RUN apk --no-cache --update add nano
 
-COPY nginx.conf /etc/nginx/
+COPY ./etc/nginx.conf /etc/nginx/
 
 RUN rm /etc/nginx/conf.d/*.conf
-ADD default.conf /etc/nginx/conf.d/
 
+COPY ./etc/default.conf /etc/nginx/conf.d/
+COPY ./etc/fastcgi_params /etc/nginx/fastcgi_params
+COPY ./etc/html-errorpages /usr/share/nginx/html-errorpages
+COPY ./etc/errorpages.conf /etc/nginx/errorpages.conf
 
-# ADD prod/nginx/default.conf /etc/nginx/conf.d/
-# ADD template.conf /etc/nginx/conf.d/
+COPY ./nginx-entrypoint.sh /nginx-entrypoint.sh
 
-# CMD /bin/sh -c "envsubst '\$NGINX_HOST \$NGINX_PHP_APP' < /etc/nginx/conf.d/template.conf > /etc/nginx/conf.d/default.conf && rm /etc/nginx/conf.d/template.conf && exec nginx -g 'daemon off;'"
-# CMD /bin/sh -c "envsubst '\$NGINX_HOST \$NGINX_PHP_APP' < /etc/nginx/conf.d/template.conf > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+WORKDIR $ROOT_DIR
 
-WORKDIR /var/www/
+ENTRYPOINT ["/nginx-entrypoint.sh"]
+
+CMD ["nginx", "-g", "daemon off;"]

@@ -1,13 +1,13 @@
 #!/bin/bash -l
 #$ -S /bin/bash
 
-PACKAGE_VERSION=$(cat Dockerfile \
-  | grep LABEL \
-  | grep version \
-  | awk -F= '{print $2}' \
-  | sed 's/[",]//g' \
-  | tr -d '[[:space:]]'
- )
+#PACKAGE_VERSION=$(cat Dockerfile \
+#  | grep LABEL \
+#  | grep version \
+#  | awk -F= '{print $2}' \
+#  | sed 's/[",]//g' \
+#  | tr -d '[[:space:]]'
+# )
 
 PACKAGE_VERSION=$(git describe --tags $(git rev-list --tags --max-count=1))
 

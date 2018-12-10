@@ -7,3 +7,6 @@ build.sh
 enter.sh
 *.yml
 /node_modules/
+/package.json
+/package-lock.json
+/source/

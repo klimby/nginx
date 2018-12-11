@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.2"></a>
+## [0.3.2](https://github.com/klimby/e-nginx/compare/v0.3.1...v0.3.2) (2018-12-11)
+
+
+### Bug Fixes
+
+* **release:** add env port ([870d246](https://github.com/klimby/e-nginx/commit/870d246))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/klimby/e-nginx/compare/v0.3.0...v0.3.1) (2018-12-10)
 

@@ -6,6 +6,7 @@ ENV FPM_PORT 9000
 ENV FPM_HOST dataserver
 ENV ROOT_DIR /var/www
 ENV SERVER_NAME localhost
+ENV NGINX_PORT 80
 
 ENV SERVER_PATH /var/www/dataserver/public
 ENV CLIENT_PATH /var/www/client

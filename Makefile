@@ -33,7 +33,7 @@ help: ## Show this help
 build: create pull info## Создать и отправить на хаб
 
 pull: info## Отправить на хаб
-	docker push klimby/$(CONTAINER_NAME):$PACKAGE_VERSION
+	docker push klimby/$(CONTAINER_NAME):$(PACKAGE_VERSION)
 	docker push klimby/$(CONTAINER_NAME):latest
 
 create: info## Создать

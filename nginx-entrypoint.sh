@@ -34,6 +34,6 @@ sed -i "s#%CLIENT_PATH%#${CLIENT_PATH}#g" "$SERVER_CONFIG_PATH";
 sed -i "s#%NGINX_PORT%#${NGINX_PORT}#g" "$SERVER_CONFIG_PATH";
 }
 
-trap replace 0
+replace
 
 exec "$@";

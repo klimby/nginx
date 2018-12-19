@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.4"></a>
+## [0.3.4](https://github.com/klimby/e-nginx/compare/v0.3.3...v0.3.4) (2018-12-19)
+
+
+### Bug Fixes
+
+* **release:** remove trap from sh ([0c18166](https://github.com/klimby/e-nginx/commit/0c18166))
+
+
+
 <a name="0.3.3"></a>
 ## [0.3.3](https://github.com/klimby/e-nginx/compare/v0.3.2...v0.3.3) (2018-12-14)
 

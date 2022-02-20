@@ -1,6 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.0.0](https://github.com/klimby/e-nginx/compare/v0.3.4...v1.0.0) (2022-02-20)
+
+
+### Features
+
+* rebase to nginx v.1.21 ([73cbafd](https://github.com/klimby/e-nginx/commit/73cbafde083477c21fba3c1f520f0d49d31c056e))
+* **release:** rel ([14c5985](https://github.com/klimby/e-nginx/commit/14c59853bbf849bf3d9a8bd32d4f0dd8aa17a380))
 
 <a name="0.3.4"></a>
 ## [0.3.4](https://github.com/klimby/e-nginx/compare/v0.3.3...v0.3.4) (2018-12-19)

@@ -5,12 +5,12 @@
 
 ![Docker 20.10](https://img.shields.io/badge/Docker-20.10-blue.svg?style=plastic "Docker 20.10")
 
-![example workflow](https://github.com/klimby/postgres/actions/workflows/docker-image.yml/badge.svg)
+![example workflow](https://github.com/klimby/nginx/actions/workflows/docker-image.yml/badge.svg)
 
 
 # NGINX docker image
 
-NGINX docker aplpine based image.
+NGINX docker alpine based image.
 
 ```
 git clone ssh://git@github.com/klimby/nginx.git

@@ -1,11 +1,16 @@
 {
-  "name": "e-nginx",
+  "name": "nginx",
   "version": "0.3.4",
-  "description": "nginx:1.15-alpine",
+  "description": "NGINX docker image",
   "main": "index.js",
   "scripts": {
-    "release": "standard-version",
-    "patch": "standard-version -- --release-as patch"
+    "======= STANDARD VERSION SECTION =======": "",
+    "major": "standard-version --release-as major",
+    "major-dry": "standard-version --release-as major --dry-run",
+    "minor": "standard-version --release-as minor",
+    "minor-dry": "standard-version --release-as minor --dry-run",
+    "patch": "standard-version --release-as patch",
+    "patch-dry": "standard-version --release-as patch --dry-run"
   },
   "repository": {
     "type": "git",
@@ -13,15 +18,15 @@
   },
   "keywords": [
     "docker",
-    "nginx"
+    "NGINX"
   ],
   "author": "Alexander Klimov",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/klimby/e-nginx/issues"
+    "url": "https://github.com/klimby/nginx/issues"
   },
-  "homepage": "https://github.com/klimby/e-nginx#readme",
+  "homepage": "https://github.com/klimby/nginx#readme",
   "devDependencies": {
-    "standard-version": "^4.4.0"
+    "standard-version": "^9.3.2"
   }
 }

@@ -1,0 +1,26 @@
+version: '3.4'
+
+networks:
+  nginx-text:
+    driver: bridge
+
+services:
+
+  &nginx nginx:
+    image: klimby/nginx:latest
+    container_name: nginx-test
+    hostname: *nginx
+    ports: ["8080:80"]
+    volumes:
+      - ./app:/app
+      - ./test.conf:/etc/nginx/conf.d/test.conf:ro
+    #  - ../conf/nginx.conf:/etc/nginx/nginx.conf:ro
+    networks:
+      - nginx-text
+
+
+volumes:
+  postgresql-test-data:
+
+
+

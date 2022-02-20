@@ -3,24 +3,13 @@
 # Makefile readme (en): <https://www.gnu.org/software/make/manual/html_node/index.html#SEC_Contents>
 SHELL = /bin/sh
 
-COM_COLOR   = \033[0;34m
-OBJ_COLOR   = \033[0;36m
-OK_COLOR    = \033[0;32m
-ERROR_COLOR = \033[0;31m
-WARN_COLOR  = \033[0;33m
-NO_COLOR    = \033[m
-
 docker_bin := $(shell command -v docker 2> /dev/null)
 
-docker_compose_bin := $(shell command -v docker-compose 2> /dev/null)
-
-PACKAGE_VERSION := $(shell git describe --tags $$(git rev-list --tags --max-count=1))
-
-CONTAINER_NAME := e-nginx
+PREFIX := klimby
 
 .DEFAULT_GOAL := help
 
-.PHONY: help build pull create readme
+.PHONY: help build push create up down enter
 
 --------------------: ## --------------------
 
@@ -30,19 +19,24 @@ help: ## Show this help
 --------------------: ## --------------------
 
 
-build: create pull info## Создать и отправить на хаб
+build: create push ## Create and send to hub
 
-pull: info## Отправить на хаб
-	docker push klimby/$(CONTAINER_NAME):$(PACKAGE_VERSION)
-	docker push klimby/$(CONTAINER_NAME):latest
+push: ## Send to docker hub
+	$(docker_bin) push $(PREFIX)/nginx:1.21
+	$(docker_bin) push $(PREFIX)/nginx:latest
 
-create: info## Создать
-	$(docker_bin) build -t klimby/$(CONTAINER_NAME):$(PACKAGE_VERSION) -t klimby/$(CONTAINER_NAME):latest .
+create: ## Create image
+	$(docker_bin) build -t $(PREFIX)/nginx:1.21 -t $(PREFIX)/nginx:latest .
 
-info: ## Версия
-	@printf "%b" "$(COM_COLOR)\nВерсия $(PACKAGE_VERSION)\n$(NO_COLOR)"
+--------------------: ## --------------------
 
-readme: info ## Актуализация Read.me
-	@sed -i "s#\[Version v.*\]#[Version $(PACKAGE_VERSION)]#g" ./README.md;
-	@sed -i 's#\"Version v.*\"#"Version $(PACKAGE_VERSION)"#g' ./README.md;
-	@sed -i 's#version-v.*-blue#version-$(PACKAGE_VERSION)-blue#g' ./README.md;
+up: ## Start test compose
+	@$(docker_bin) compose -f ./docker-nginx/docker-compose.yml up
+
+down: ## Stop test compose, delete db data
+	@$(docker_bin) compose -f ./docker-nginx/docker-compose.yml down
+
+enter: ## Enter in container
+	@$(docker_bin)  exec -i -t  nginx-test /bin/sh
+
+
